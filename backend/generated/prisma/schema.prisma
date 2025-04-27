@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String @id @default(uuid())
+  email    String @unique
+  name     String
+  password String
+}
+
+model Admin {
+  id       Int    @id @default(autoincrement())
+  name     String
+  email    String @unique
+  password String
+}
+
+model Batter {
+  id            Int    @id @default(autoincrement())
+  name          String
+  age           Int
+  nationality   String
+  image         String
+  span          String
+  matches       Int
+  innings       Int
+  notouts       Int
+  runs          Int
+  heighestscore Int
+  average       Int
+  ballsfaced    Int
+  strikerate    Float
+  hundreds      Int
+  fifties       Int
+  ducks         Int
+  fours         Int
+  sixes         Int
+}
+
+model Bowler {
+  id          Int    @id @default(autoincrement())
+  name        String
+  age         Int
+  nationality String
+  image       String
+  span        String
+  matches     Int
+  innings     Int
+  balls       Int
+  overs       Int
+  madeins     Int
+  runs        Int
+  wickets     Int
+  bbi         String
+  average     Float
+  economy     Float
+  strikerate  Float
+  fours       Int
+  fives       Int
+}
+
+model Allrounders {
+  id          Int    @id @default(autoincrement())
+  name        String
+  age         Int
+  image       String
+  nationality String
+  span        String
+  matches     Int
+  innings     Int
+  balls       Int
+  overs       Int
+  madeins     Int
+  runs        Int
+  wickets     Int
+  bbi         String
+  average     Float
+  economy     Float
+  strikerate  Float
+  fours       Int
+  fives       Int
+}
